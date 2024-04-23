@@ -65,11 +65,13 @@ void checkBrackets(const std::string filepath) {
 
 
 
-int main() {
-    std::cout << "Please write the name of the file and the extension (.txt, .cpp, .ts):";
-    std::string filePath;
-    std::cin >> filePath;
-    checkBrackets(filePath);
+int main(int argc, char* argv[]) {
+    if (argc < 2) {
+        std::cout << "Don't forget to specify the filename";
+        return 1;
+    }
+
+    checkBrackets(argv[1]);
     return 0;
 }
 
