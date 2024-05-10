@@ -12,14 +12,14 @@ struct BracketInfo {
     int column;
 };
 
-void reportErrors(std::stack<BracketInfo> incorrectBracketStack, std::string filePath) {
+void reportErrors(std::stack<BracketInfo>& incorrectBracketStack, const std::string& filePath) {
     while (!incorrectBracketStack.empty()) {
         std::cout << "Invalid bracket " << incorrectBracketStack.top().type << " at " << filePath << ":" << incorrectBracketStack.top().line << ":" << incorrectBracketStack.top().column << std::endl;
         incorrectBracketStack.pop();
     }
 }
 
-void checkBrackets(const std::string filepath) {
+void checkBrackets(const std::string& filepath) {
     std::ifstream file(filepath);
     if (!file.is_open()) {
         std::cerr << "Error opening file: " << filepath << std::endl;
